@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<web-app>
+    <servlet>
+        <servlet-name>Login</servlet-name>
+        <servlet-class>controller.Login</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Login</servlet-name>
+        <url-pattern>/Login</url-pattern>
+    </servlet-mapping>
+	
+    <servlet>
+        <servlet-name>DrugAdd</servlet-name>
+        <servlet-class>controller.DrugAdd</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DrugAdd</servlet-name>
+        <url-pattern>/DrugAdd</url-pattern>
+    </servlet-mapping>
+
+	<servlet>
+        <servlet-name>DrugQuery</servlet-name>
+        <servlet-class>controller.DrugQuery</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DrugQuery</servlet-name>
+        <url-pattern>/DrugQuery</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DrugUpdate</servlet-name>
+        <servlet-class>controller.DrugUpdate</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DrugUpdate</servlet-name>
+        <url-pattern>/DrugUpdate</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DrugDelete</servlet-name>
+        <servlet-class>controller.DrugDelete</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DrugDelete</servlet-name>
+        <url-pattern>/DrugDelete</url-pattern>
+    </servlet-mapping>
+</web-app>
