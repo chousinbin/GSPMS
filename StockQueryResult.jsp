@@ -92,7 +92,7 @@
                             <button type="submit">添加</button>
                         </form> -->
                         <form action="StockDelete" method="POST" style="display:inline;">
-                            <input type="hidden" name="id" value="${drug.stockId}">
+                            <input type="hidden" name="stockId" value="${drug.stockId}">
                             <button type="submit" class="delete">删除</button>
                         </form>
                     </td>

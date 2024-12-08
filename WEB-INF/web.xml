@@ -71,4 +71,13 @@
         <servlet-name>StockQuery</servlet-name>
         <url-pattern>/StockQuery</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>StockDelete</servlet-name>
+        <servlet-class>controller.StockDelete</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>StockDelete</servlet-name>
+        <url-pattern>/StockDelete</url-pattern>
+    </servlet-mapping>
 </web-app>
