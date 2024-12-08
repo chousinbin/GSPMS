@@ -15,6 +15,15 @@ public class Drug {
     private float salePrice;
     private int quantity;
     private String stockDate;
+    private float saleSumPrice;
+
+    public float getSaleSumPrice() {
+        return saleSumPrice;
+    }
+
+    public void setSaleSumPrice(float saleSumPrice) {
+        this.saleSumPrice = saleSumPrice;
+    }
 
     public String getId() {
         return id;

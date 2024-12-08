@@ -80,4 +80,13 @@
         <servlet-name>StockDelete</servlet-name>
         <url-pattern>/StockDelete</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DrugSale</servlet-name>
+        <servlet-class>controller.DrugSale</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DrugSale</servlet-name>
+        <url-pattern>/DrugSale</url-pattern>
+    </servlet-mapping>
 </web-app>
