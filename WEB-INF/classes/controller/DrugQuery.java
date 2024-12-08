@@ -43,9 +43,9 @@ public class DrugQuery extends HttpServlet {
                 drug.setName(rs.getString(3));
                 drug.setBrand(rs.getString(4));
                 drug.setOrigin(rs.getString(5));
-                drug.setBatchNumber(rs.getString(6));
-                drug.setProductionDate(rs.getDate(7).toString());
-                drug.setExpirationDate(rs.getDate(8).toString());
+                // drug.setBatchNumber(rs.getString(6));
+                // drug.setProductionDate(rs.getDate(7).toString());
+                // drug.setExpirationDate(rs.getDate(8).toString());
                 drugList.add(drug);
             }
 

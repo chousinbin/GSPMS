@@ -55,13 +55,13 @@
         <thead>
             <tr>
                 <th>ID</th>
-                <th>生产商</th>
+                <th>药品厂家</th>
                 <th>药品名称</th>
-                <th>品牌</th>
-                <th>来源</th>
-                <th>批号</th>
+                <th>药品品牌</th>
+                <th>药品产地</th>
+                <!-- <th>批号</th>
                 <th>生产日期</th>
-                <th>到期日期</th>
+                <th>到期日期</th> -->
                 <th>操作</th>
             </tr>
         </thead>
@@ -74,9 +74,9 @@
                     <td>${drug.name}</td>
                     <td>${drug.brand}</td>
                     <td>${drug.origin}</td>
-                    <td>${drug.batchNumber}</td>
+                    <!-- <td>${drug.batchNumber}</td>
                     <td>${drug.productionDate}</td>
-                    <td>${drug.expirationDate}</td>
+                    <td>${drug.expirationDate}</td> -->
                     
                     <td>
                         <form action="DrugUpdate" method="GET" style="display:inline;">

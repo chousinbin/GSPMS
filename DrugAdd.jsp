@@ -81,14 +81,14 @@
             <label>药品产地:</label>
             <input type="text" name="origin">
             
-            <label>药品批号:</label>
+            <!-- <label>药品批号:</label>
             <input type="text" name="batchNumber" required>
             
             <label>生产日期:</label>
             <input type="date" name="productionDate" required>
             
             <label>过期日期:</label>
-            <input type="date" name="expirationDate" required>
+            <input type="date" name="expirationDate" required> -->
             
             <input type="submit" value="添加药品">
         </form>

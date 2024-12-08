@@ -11,60 +11,85 @@
             font-family: Arial, sans-serif;
             background-color: #f4f4f9;
             margin: 0;
-            padding: 20px;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
-        h2 {
+        .form-container {
+            background-color: #fff;
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             text-align: center;
+            max-width: 500px;
+            width: 100%;
         }
-        form {
-            width: 50%;
-            margin: 20px auto;
-            text-align: center;
+        .form-container h1 {
+            margin-bottom: 20px;
+            color: #333;
         }
-        table {
-            width: 90%;
-            margin: 20px auto;
-            border-collapse: collapse;
-        }
-        table th, table td {
-            border: 1px solid #ddd;
-            padding: 10px;
+        .form-container label {
+            display: block;
+            margin: 10px 0 5px;
             text-align: left;
         }
-        table th {
-            background-color: #f9f9f9;
+        .form-container input[type="text"],
+        .form-container input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
         }
-        button {
-            padding: 5px 10px;
+        .form-container input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #6bbf59;
+            color: #fff;
             border: none;
-            background-color: #4CAF50;
-            color: white;
+            border-radius: 5px;
+            font-size: 16px;
             cursor: pointer;
-            border-radius: 3px;
+            transition: background-color 0.3s ease;
         }
-        button.delete {
-            background-color: #f44336;
+        .form-container input[type="submit"]:hover {
+            background-color: #5da349;
+        }
+        .message {
+            color: green;
+            margin-top: 10px;
         }
     </style>
 </head>
 <body>
-    <a href="DrugQuery.jsp">药品查询</a>
-    <a href="DrugAdd.jsp">添加药品</a>
-    <a href="dashboard.jsp">操作主页</a>
-    <a href="index.jsp">退出登录</a>
-    <h2>药品信息修改</h2>
+    <div class="form-container">
+        <a href="DrugQuery.jsp">药品查询</a>
+        <a href="DrugAdd.jsp">添加药品</a>
+        <a href="dashboard.jsp">操作主页</a>
+        <a href="index.jsp">退出登录</a>
+        <h1>药品信息修改</h1>
 
-    <form action="DrugUpdate" method="POST">
-        <input type="hidden" name="id" value="${drug.id}">
-        生产厂家: <input type="text" name="manufacturer" value="${drug.manufacturer}">
-        <br>药品名称: <input type="text" name="name" value="${drug.name}">
-        <br>药品品牌: <input type="text" name="brand" value="${drug.brand}">
-        <br>药品产地: <input type="text" name="origin" value="${drug.origin}">
-        <br>产品批号: <input type="text" name="batch_number" value="${drug.batchNumber}">
-        <br>生产日期: <input type="text" name="production_date" value="${drug.productionDate}">
-        <br>过期日期: <input type="text" name="expiration_date" value="${drug.expirationDate}">
-        <!-- 其他字段 -->
-        <br><button type="submit">修改</button>
-    </form>
+        <form action="DrugUpdate" method="POST">
+            <input type="hidden" name="id" value="${drug.id}">
+            <label>药品厂家:</label>
+            <input type="text" name="manufacturer" value="${drug.manufacturer}">
+            <label>药品名称:</label>
+            <input type="text" name="name" value="${drug.name}">
+            <label>药品品牌:</label>
+            <input type="text" name="brand" value="${drug.brand}">
+            <label>药品产地:</label>
+            <input type="text" name="origin" value="${drug.origin}">
+            <!-- <label>药品批号:</label>
+            <input type="text" name="batch_number" value="${drug.batchNumber}">
+            <label>生产日期:</label>
+            <input type="date" name="production_date" value="${drug.productionDate}">
+            <label>过期日期:</label>
+            <input type="date" name="expiration_date" value="${drug.expirationDate}"> -->
+            <!-- 其他字段 -->
+            <input type="submit" value="修改信息">
+        </form>
+    </div>
 </body>
 </html>

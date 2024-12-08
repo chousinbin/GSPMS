@@ -19,11 +19,6 @@ public class DrugAdd extends HttpServlet {
         drug.setName(request.getParameter("name"));
         drug.setBrand(request.getParameter("brand"));
         drug.setOrigin(request.getParameter("origin"));
-        drug.setBatchNumber(request.getParameter("batchNumber"));
-        drug.setProductionDate(request.getParameter("productionDate"));
-        drug.setExpirationDate(request.getParameter("expirationDate"));
-        
-
 
         // 判断要求是否为空
         // if (equNo.equals("") || equNo == null || equName.equals("") || equName == null ||
@@ -38,16 +33,16 @@ public class DrugAdd extends HttpServlet {
         DB db = new DB();
         String sql = 
         "INSERT INTO " + 
-        "drugs (manufacturer, name, brand, origin, batch_number, production_date, expiration_date) " +  
-        "VALUES (?, ?, ?, ?, ?, ?, ?)";
+        "drugs (manufacturer, name, brand, origin) " +  
+        "VALUES (?, ?, ?, ?)";
         Object[] params = new Object[] { 
             drug.getManufacturer(), 
             drug.getName(),
             drug.getBrand(),
             drug.getOrigin(),
-            drug.getBatchNumber(),
-            Date.valueOf(LocalDate.parse(drug.getProductionDate())),
-            Date.valueOf(LocalDate.parse(drug.getExpirationDate()))
+            // drug.getBatchNumber(),
+            // Date.valueOf(LocalDate.parse(drug.getProductionDate())),
+            // Date.valueOf(LocalDate.parse(drug.getExpirationDate()))
         };
 
         int res = db.excuteU(sql, params);

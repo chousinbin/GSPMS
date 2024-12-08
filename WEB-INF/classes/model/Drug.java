@@ -1,36 +1,122 @@
 package model;
 
 public class Drug {
-    public String id;
-    public String manufacturer;
-    public String name;
-    public String brand;
-    public String origin;
-    public String batchNumber;
-    public String productionDate;
-    public String expirationDate;
+    private String id;
+    private String manufacturer;
+    private String name;
+    private String brand;
+    private String origin;
+    private String batchNumber;
+    private String productionDate;
+    private String expirationDate;
 
-    public String getId() { return id; }
-    public void setId(String id) { this.id = id; }
+    private int stockId;
+    private float purchasePrice;
+    private float salePrice;
+    private int number;
+    private String stockDate;
 
-    public String getManufacturer() { return manufacturer; }
-    public void setManufacturer(String manufacturer) { this.manufacturer = manufacturer; }
+    public String getId() {
+        return id;
+    }
 
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
+    public void setId(String id) {
+        this.id = id;
+    }
 
-    public String getBrand() { return brand; }
-    public void setBrand(String brand) { this.brand = brand; }
+    public String getManufacturer() {
+        return manufacturer;
+    }
 
-    public String getOrigin() { return origin; }
-    public void setOrigin(String origin) { this.origin = origin; }
+    public void setManufacturer(String manufacturer) {
+        this.manufacturer = manufacturer;
+    }
 
-    public String getBatchNumber() { return batchNumber; }
-    public void setBatchNumber(String batchNumber) { this.batchNumber = batchNumber; }
+    public String getName() {
+        return name;
+    }
 
-    public String getProductionDate() { return productionDate; }
-    public void setProductionDate(String productionDate) { this.productionDate = productionDate; }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-    public String getExpirationDate() { return expirationDate; }
-    public void setExpirationDate(String expirationDate) { this.expirationDate = expirationDate; }
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public String getOrigin() {
+        return origin;
+    }
+
+    public void setOrigin(String origin) {
+        this.origin = origin;
+    }
+
+    public String getBatchNumber() {
+        return batchNumber;
+    }
+
+    public void setBatchNumber(String batchNumber) {
+        this.batchNumber = batchNumber;
+    }
+
+    public String getProductionDate() {
+        return productionDate;
+    }
+
+    public void setProductionDate(String productionDate) {
+        this.productionDate = productionDate;
+    }
+
+    public String getExpirationDate() {
+        return expirationDate;
+    }
+
+    public void setExpirationDate(String expirationDate) {
+        this.expirationDate = expirationDate;
+    }
+
+    public int getStockId() {
+        return stockId;
+    }
+
+    public void setStockId(int stockId) {
+        this.stockId = stockId;
+    }
+
+    public float getPurchasePrice() {
+        return purchasePrice;
+    }
+
+    public void setPurchasePrice(float purchasePrice) {
+        this.purchasePrice = purchasePrice;
+    }
+
+    public float getSalePrice() {
+        return salePrice;
+    }
+
+    public void setSalePrice(float salePrice) {
+        this.salePrice = salePrice;
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
+    }
+
+    public String getStockDate() {
+        return stockDate;
+    }
+
+    public void setStockDate(String stockDate) {
+        this.stockDate = stockDate;
+    }
 }

@@ -15,6 +15,8 @@ import java.time.LocalDate;
 public class DrugUpdate extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+
         String drugId = request.getParameter("id");
 
         if (drugId != null) {
@@ -33,9 +35,9 @@ public class DrugUpdate extends HttpServlet {
                     drug.setName(rs.getString("name"));
                     drug.setBrand(rs.getString("brand"));
                     drug.setOrigin(rs.getString("origin"));
-                    drug.setBatchNumber(rs.getString("batch_number"));
-                    drug.setProductionDate(rs.getDate("production_date").toString());
-                    drug.setExpirationDate(rs.getDate("expiration_date").toString());
+                    // drug.setBatchNumber(rs.getString("batch_number"));
+                    // drug.setProductionDate(rs.getDate("production_date").toString());
+                    // drug.setExpirationDate(rs.getDate("expiration_date").toString());
 
                     // 将 drug 对象传递到 JSP 页面
                     request.setAttribute("drug", drug);
@@ -57,14 +59,16 @@ public class DrugUpdate extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+
         String id = request.getParameter("id");
         String manufacturer = request.getParameter("manufacturer");
         String name = request.getParameter("name");
         String brand = request.getParameter("brand");
         String origin = request.getParameter("origin");
-        String batchNumber = request.getParameter("batch_number");
-        String productionDate = request.getParameter("production_date");
-        String expirationDate = request.getParameter("expiration_date");
+        // String batchNumber = request.getParameter("batch_number");
+        // String productionDate = request.getParameter("production_date");
+        // String expirationDate = request.getParameter("expiration_date");
 
         // 创建并设置 Drug 对象
         Drug drug = new Drug();
@@ -73,13 +77,13 @@ public class DrugUpdate extends HttpServlet {
         drug.setName(name);
         drug.setBrand(brand);
         drug.setOrigin(origin);
-        drug.setBatchNumber(batchNumber);
-        drug.setProductionDate(productionDate);
-        drug.setExpirationDate(expirationDate);
+        // drug.setBatchNumber(batchNumber);
+        // drug.setProductionDate(productionDate);
+        // drug.setExpirationDate(expirationDate);
 
         // 执行数据库更新操作
         DB db = new DB();
-        String sql = "UPDATE drugs SET manufacturer=?, name=?, brand=?, origin=?, batch_number=?, production_date=?, expiration_date=? WHERE id=?";
+        String sql = "UPDATE drugs SET manufacturer=?, name=?, brand=?, origin=? WHERE id=?";
         
         
         try {
@@ -88,10 +92,10 @@ public class DrugUpdate extends HttpServlet {
             stmt.setString(2, drug.getName());
             stmt.setString(3, drug.getBrand());
             stmt.setString(4, drug.getOrigin());
-            stmt.setString(5, drug.getBatchNumber());
-            stmt.setDate(6, Date.valueOf(LocalDate.parse(drug.getProductionDate())));
-            stmt.setDate(7, Date.valueOf(LocalDate.parse(drug.getExpirationDate())));
-            stmt.setInt(8, Integer.parseInt(drug.getId()));
+            // stmt.setString(5, drug.getBatchNumber());
+            // stmt.setDate(6, Date.valueOf(LocalDate.parse(drug.getProductionDate())));
+            // stmt.setDate(7, Date.valueOf(LocalDate.parse(drug.getExpirationDate())));
+            stmt.setInt(5, Integer.parseInt(drug.getId()));
             stmt.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
