@@ -1,5 +1,5 @@
 <%@ page import="model.User" %>
-<%@ page pageEncoding="UTF-8" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <!DOCTYPE html>
 <html>
@@ -30,7 +30,7 @@
         <% } %>
 
         <% if ("admin".equals(role) || "cashier".equals(role)) { %>
-            <li><a href="sales.jsp">库存盘点</a></li>
+            <li><a href="StockQuery.jsp">库存盘点</a></li>
         <% } %>
 
         <% if ("admin".equals(role) || "cashier".equals(role)) { %>
@@ -43,6 +43,7 @@
         } else {
             // 如果没有 User 对象，可能是 session 过期或没有登录
             out.println("Session expired. Please log in again.");
+            out.println("<a href=\"index.jsp\">重新登录</a>");
         }
     %>
 </body>

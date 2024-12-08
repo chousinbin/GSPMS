@@ -19,15 +19,47 @@ public class StockQuery extends HttpServlet {
 
         String keyword = request.getParameter("keyword");
         if (keyword == null || keyword == "") {
-            sql = "select * from drugs";
+            sql = 
+            "SELECT " +
+            "drugs.id as drug_id, " + 
+            "stock.stock_id as stock_id, " + 
+            "drugs.manufacturer, " + 
+            "drugs.name, " + 
+            "drugs.brand, " + 
+            "drugs.origin, " + 
+            "stock.batch_number, " + 
+            "stock.production_date, " + 
+            "stock.expiration_date, " + 
+            "stock.quantity, " + 
+            "stock.purchase_price, " + 
+            "stock.sale_price " + 
+            "FROM stock " + 
+            "INNER JOIN drugs " + 
+            "ON stock.drug_id = drugs.id " +
+            "ORDER BY drugs.name ASC";
         } else {
-            sql = "SELECT * " + 
-            "FROM drugs " + 
+            sql = "SELECT " +
+            "drugs.id as drug_id, " + 
+            "stock.stock_id as stock_id, " +
+            "drugs.manufacturer, " + 
+            "drugs.name, " + 
+            "drugs.brand, " + 
+            "drugs.origin, " + 
+            "stock.batch_number, " + 
+            "stock.production_date, " + 
+            "stock.expiration_date, " + 
+            "stock.quantity, " + 
+            "stock.purchase_price, " + 
+            "stock.sale_price " + 
+            "FROM stock " + 
+            "INNER JOIN drugs " + 
+            "ON stock.drug_id = drugs.id " +
             "WHERE " + 
-            "manufacturer LIKE '%" + keyword + "%' OR " + 
+            "(manufacturer LIKE '%" + keyword + "%' OR " + 
             "name LIKE '%" + keyword + "%' OR " + 
             "brand LIKE '%" + keyword + "%' OR " + 
-            "origin LIKE '%" + keyword + "%'"; 
+            "origin LIKE '%" + keyword + "%') " + 
+            "ORDER BY drugs.name ASC";
         }
 
         List<Drug> drugList = new ArrayList<>();
@@ -39,13 +71,17 @@ public class StockQuery extends HttpServlet {
             while (rs.next()) {
                 Drug drug = new Drug();
                 drug.setId(String.valueOf(rs.getInt(1)));
-                drug.setManufacturer(rs.getString(2));
-                drug.setName(rs.getString(3));
-                drug.setBrand(rs.getString(4));
-                drug.setOrigin(rs.getString(5));
-                // drug.setBatchNumber(rs.getString(6));
-                // drug.setProductionDate(rs.getDate(7).toString());
-                // drug.setExpirationDate(rs.getDate(8).toString());
+                drug.setStockId(rs.getInt(2));
+                drug.setManufacturer(rs.getString(3));
+                drug.setName(rs.getString(4));
+                drug.setBrand(rs.getString(5));
+                drug.setOrigin(rs.getString(6));
+                drug.setBatchNumber(rs.getString(7));
+                drug.setProductionDate(rs.getDate(8).toString());
+                drug.setExpirationDate(rs.getDate(9).toString());
+                drug.setQuantity(rs.getInt(10));
+                drug.setPurchasePrice(rs.getFloat(11));
+                drug.setSalePrice(rs.getFloat(12));
                 drugList.add(drug);
             }
 
@@ -55,7 +91,7 @@ public class StockQuery extends HttpServlet {
 
         request.setAttribute("drugList", drugList);
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("DrugQueryResult.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("StockQueryResult.jsp");
         dispatcher.forward(request, response);
     }
 

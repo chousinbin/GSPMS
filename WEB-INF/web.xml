@@ -62,4 +62,13 @@
         <servlet-name>StockAdd</servlet-name>
         <url-pattern>/StockAdd</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>StockQuery</servlet-name>
+        <servlet-class>controller.StockQuery</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>StockQuery</servlet-name>
+        <url-pattern>/StockQuery</url-pattern>
+    </servlet-mapping>
 </web-app>
