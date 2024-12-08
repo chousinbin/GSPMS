@@ -13,7 +13,7 @@ public class Drug {
     private int stockId;
     private float purchasePrice;
     private float salePrice;
-    private int number;
+    private int quantity;
     private String stockDate;
 
     public String getId() {
@@ -104,12 +104,12 @@ public class Drug {
         this.salePrice = salePrice;
     }
 
-    public int getNumber() {
-        return number;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setNumber(int number) {
-        this.number = number;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public String getStockDate() {

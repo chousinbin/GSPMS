@@ -26,7 +26,7 @@
         <% } %>
 
         <% if ("admin".equals(role) || "stock".equals(role)) { %>
-            <li><a href="StockAdd.jsp">药品入库</a></li>
+            <li><a href="StockDrugQuery.jsp">药品入库</a></li>
         <% } %>
 
         <% if ("admin".equals(role) || "cashier".equals(role)) { %>

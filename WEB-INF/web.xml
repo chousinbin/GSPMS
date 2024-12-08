@@ -44,4 +44,22 @@
         <servlet-name>DrugDelete</servlet-name>
         <url-pattern>/DrugDelete</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>StockDrugQuery</servlet-name>
+        <servlet-class>controller.StockDrugQuery</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>StockDrugQuery</servlet-name>
+        <url-pattern>/StockDrugQuery</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>StockAdd</servlet-name>
+        <servlet-class>controller.StockAdd</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>StockAdd</servlet-name>
+        <url-pattern>/StockAdd</url-pattern>
+    </servlet-mapping>
 </web-app>
