@@ -46,10 +46,14 @@
     </style>
 </head>
 <body>
-    <a href="DrugQuery.jsp">药品查询</a>
-    <a href="DrugAdd.jsp">添加药品</a>
-    <a href="dashboard.jsp">操作主页</a>
-    <a href="index.jsp">退出登录</a>
+    <center>
+        <a href="DrugQuery.jsp">药品查询</a>
+        <a href="DrugQuery.jsp">药品管理</a>
+        <a href="StockDrugQuery.jsp">药品入库</a>
+        <a href="StockQuery.jsp">库存销售</a>
+        <a href="dashboard.jsp">主页</a>
+        <a href="index.jsp">退出登录</a>
+    </center>
     
     <h2>库存盘点</h2>
     <form action="StockQuery" method="GET">
