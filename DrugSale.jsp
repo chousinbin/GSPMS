@@ -100,6 +100,12 @@
 
             <input type="submit" value="出售">
         </form>
+        <div class="message">
+            <% if (request.getAttribute("message") != null) { %>
+                <%= request.getAttribute("message") %>
+                <a href="StockQuery">库存销售</a>
+            <% } %>
+        </div>
     </div>
 </body>
 </html>

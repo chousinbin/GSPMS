@@ -79,7 +79,7 @@ public class DrugSale extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+        throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
 
         String stockId = request.getParameter("stock_id");
@@ -101,22 +101,45 @@ public class DrugSale extends HttpServlet {
 
         // 执行数据库更新操作
         DB db = new DB();
-        String sql = "UPDATE stock " + 
-        "SET quantity = quantity - ? " + 
-        "WHERE stock_id = ?";
-        
-        
-        try {
-            PreparedStatement stmt = db.getCon().prepareStatement(sql);
-            stmt.setInt(1, Integer.parseInt(saleQuantity));
-            stmt.setInt(2, Integer.parseInt(stockId));
-            stmt.executeUpdate();
-        } catch (Exception e) {
+        String checkStockSql = "SELECT quantity FROM stock WHERE stock_id = ?";
+        String updateStockSql = "UPDATE stock SET quantity = quantity - ? WHERE stock_id = ?";
+
+        try (PreparedStatement checkStmt = db.getCon().prepareStatement(checkStockSql);
+            PreparedStatement updateStmt = db.getCon().prepareStatement(updateStockSql)) {
+
+            // 检查库存
+            checkStmt.setInt(1, Integer.parseInt(stockId));
+            ResultSet rs = checkStmt.executeQuery();
+
+            if (rs.next()) {
+                int currentQuantity = rs.getInt(1);
+                if (currentQuantity < Integer.parseInt(saleQuantity)) {
+                    request.setAttribute("message", "库存不足，销售失败！");
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("DrugSale.jsp");
+                    dispatcher.forward(request, response);
+                    return;  // 如果库存不足，停止继续执行
+                }
+            } else {
+                request.setAttribute("message", "药品不存在！");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("DrugSale.jsp");
+                dispatcher.forward(request, response);
+                return;  // 如果药品不存在，停止继续执行
+            }
+
+            // 执行库存更新
+            updateStmt.setInt(1, Integer.parseInt(saleQuantity));
+            updateStmt.setInt(2, Integer.parseInt(stockId));
+            updateStmt.executeUpdate();
+
+            // 将 drug 对象传递到 JSP 页面
+            request.setAttribute("drug", drug);
+            // 转发到 DrugSaleSuccess.jsp 页面
+            request.getRequestDispatcher("DrugSaleSuccess.jsp").forward(request, response);
+
+        } catch (SQLException e) {
             e.printStackTrace();
+            request.setAttribute("error", "数据库操作失败：" + e.getMessage());
+            request.getRequestDispatcher("errorPage.jsp").forward(request, response);
         }
-        // 将 drug 对象传递到 JSP 页面
-        request.setAttribute("drug", drug);
-        // 转发到 DrugModify.jsp 页面
-        request.getRequestDispatcher("DrugSaleSuccess.jsp").forward(request, response);
     }
 }
